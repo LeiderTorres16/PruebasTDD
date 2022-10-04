@@ -5,14 +5,25 @@ from typing import Optional
 app = FastAPI()
 
 @app.get("/")
-def mensaje():
-    return {"Hello World"}
+def fibonacci(posicion:str):
 
-@app.get("/items")
-def read_item(item_id:int, q:Optional[str] = None):
-        return {"item_id":item_id, "q":q}
+    try:
+        posicionEntero = int(posicion)
+    except:
+        return 0
 
-@app.post('/posts')
-def save_post(post):
-    print(post)
-    return "recived"
+    if posicionEntero <= 0:
+        return 0
+
+    posicionActual, posicionFutura = 1, 1
+    count = 1
+    while count <= posicionEntero:
+
+        valorPosicion = posicionActual + posicionFutura
+        posicionActual = posicionFutura
+        posicionFutura = valorPosicion
+        count += 1
+
+    return posicionActual
+
+
