@@ -4,26 +4,21 @@ from typing import Optional
 
 app = FastAPI()
 
-@app.get("/")
-def fibonacci(posicion:str):
+@app.get('/fibonacci/{posicion}')
+def fibonacci(posicion:int):
 
-    try:
-        posicionEntero = int(posicion)
-    except:
-        return 0
-
-    if posicionEntero <= 0:
-        return 0
+    if posicion <= 0:
+        return {"Numero":0}
 
     posicionActual, posicionFutura = 1, 1
     count = 1
-    while count <= posicionEntero:
+    while count <= posicion:
 
         valorPosicion = posicionActual + posicionFutura
         posicionActual = posicionFutura
         posicionFutura = valorPosicion
         count += 1
 
-    return posicionActual
+    return {"Numero":posicionActual}
 
 
