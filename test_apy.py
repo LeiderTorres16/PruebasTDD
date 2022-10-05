@@ -9,6 +9,14 @@ from urllib import response
 
 client = TestClient(app)
 
+
+# caso peticion hello fastapi
+def test_get_helloFastAPI():
+    response = client.get('/helloFastAPI')
+    assert response.status_code == 200
+    assert response.json() == "Hello FastAPI"
+
+
 # caso peticion la funcion existe
 def test_funcionExistente():
     response =client.get('/fibonacci/5')
@@ -36,13 +44,6 @@ def test_valorNoEntero():
 def test_valorString():
     response = client.get('/fibonacci/Alo')
     assert response.status_code == 200
-
-
-# caso peticion hello fastapi
-def test_get_helloFastAPI():
-    response = client.get('/helloFastAPI')
-    assert response.status_code == 200
-    assert response.json() == "Hello FastAPI"
 
 
 # caso peticion Numero primo
