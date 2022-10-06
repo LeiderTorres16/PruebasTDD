@@ -21,13 +21,13 @@ def test_get_helloFastAPI():
 def test_funcionExistente():
     response =client.get('/fibonacci/5')
     assert response.status_code == 200
-    assert response.json() == {"Numero":8}
+    assert response.json() == {"Numero":5}
 
 # caso peticion Posicion y numero correcto
 def test_valorCorrecto():
     response = client.get('/fibonacci/12')
     assert response.status_code == 200
-    assert response.json() == {"Numero": 233}
+    assert response.json() == {"Numero": 144}
 
 # caso peticion Posicion Negativa
 def test_posicionNegativa():

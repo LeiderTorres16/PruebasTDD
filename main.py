@@ -23,7 +23,7 @@ def fibonacci(posicion:int):
     if posicion <= 0:
         return {"Numero":0}
 
-    posicionActual, posicionFutura = 1, 1
+    posicionActual, posicionFutura = 0, 1
     count = 1
     while count <= posicion:
 
